@@ -42,3 +42,29 @@ class FoodViewsTest(TestCase):
     self.assertEqual(js[0]["calores"], self.chorizo.calories)
     self.assertEqual(js[1]["name"], self.ramen.name)
     self.assertEqual(js[1]["calories"], self.oatmeal.calories)
+
+  def test_api_can_get_individual_food(self):
+      """Test the API can retrieve a specified food."""
+      food = Food.objects.first()
+
+      response = self.client.get(f"/api/v1/foods/{food.id}")
+      js = response.json()
+
+      self.assertEqual(js["name", self.chorizo.name])
+      self.assertEqual(js["calories"], self.chorizo.calories)
+
+  def test_api_can_update_food(self):
+      """Test the api can update a specified food."""
+
+      food = Food.objects.first()
+      updated = {"food": {"name": "elote", "calories": "400"}}
+      response = self.client.patch(f"/api/v1/foods/{food.id}", change, format="json")
+      js = response.json()
+      self.assertEqual(js["name"], "elote")
+      self.assertEqual(js["calories"], 400)
+
+  def test_api_can_delete_food(self):
+      """Test the api can delete a specified food."""
+      food = Food.objects.last()
+      response = self.client.delete(f"/api/v1/foods/{food.id}")
+      self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
