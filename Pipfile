@@ -4,11 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-<<<<<<< HEAD
 pylint = "<2.0.0"
-=======
-pylint = "*"
->>>>>>> python_exploration_sprint
 
 [packages]
 dj-database-url = "==0.5.0"
