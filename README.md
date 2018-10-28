@@ -39,3 +39,6 @@ Then visit API endpoints in your browser:
 
 `http://localhost:8000/`
 
+## Future iterations
+
+This project is under construction! More information about endpoints will be added soon.
